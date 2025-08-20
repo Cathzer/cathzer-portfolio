@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* optional: custom global styles */
+html, body {
+  @apply bg-black text-gray-200;
+}
+
+/* ---------- Global dark theme ---------- */
+:root{
+  --red-1:#7f1d1d; /* dark red */
+  --red-2:#b91c1c;
+  --red-3:#ef4444; /* accent */
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-black text-white font-sans antialiased;
+}
+/* nicer text rendering */
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* selection color */
+::selection { background: rgba(239,68,68,0.35); color:#fff; }
+
+/* offset for fixed navbar when using anchor links */
+#home, #about, #projects, #contact { scroll-margin-top: 80px; }
+
+/* ---------- Navbar ---------- */
+nav {
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: saturate(120%) blur(10px);
+  border-bottom: 1px solid rgba(239,68,68,0.15); /* red-500 line */
+}
+
+/* ---------- HERO ( #home ) ---------- */
+#home {
+  position: relative;
+  isolation: isolate; /* so the glow layers stay behind content */
+}
+
+/* floating glow orbs (no extra markup needed) */
+#home::before,
+#home::after {
+  content:"";
+  position:absolute;
+  border-radius:9999px;
+  filter: blur(60px);
+  opacity:.25;
+  z-index:-1;
+}
+#home::before{
+  width:32rem; height:32rem;
+  left:-8rem; top:-6rem;
+  background: radial-gradient(circle at 30% 30%, var(--red-2), transparent 60%);
+  animation: floatA 16s ease-in-out infinite;
+}
+#home::after{
+  width:36rem; height:36rem;
+  right:-10rem; bottom:-8rem;
+  background: radial-gradient(circle at 70% 70%, #991b1b, transparent 60%);
+  animation: floatB 22s ease-in-out infinite;
+}
+
+/* subtle grid/vignette across hero */
+#home .grid-overlay::before{
+  content:"";
+  position:absolute; inset:0; z-index:-1;
+  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity:.05;
+}
+
+/* HERO buttons (if you want consistent look anywhere) */
+.btn-red {
+  @apply px-6 py-3 rounded-2xl font-semibold text-white shadow-lg transition;
+  background: linear-gradient(90deg, var(--red-2), #7a0a0a);
+  border: 1px solid rgba(239,68,68,0.25);
+}
+.btn-red:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 12px 30px -12px rgba(239,68,68,.45);
+}
+
+/* ---------- ABOUT ( #about ) ---------- */
+#about {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(127,29,29,0.10), rgba(0,0,0,0) 50%),
+    transparent;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+#about p {
+  max-width: 62ch;
+  margin-inline: auto;
+}
+
+/* ---------- PROJECTS ( #projects ) ---------- */
+#projects{
+  position: relative;
+  background:
+    radial-gradient(900px 500px at 15% 30%, rgba(185,28,28,0.10), transparent 60%),
+    radial-gradient(900px 500px at 85% 70%, rgba(127,29,29,0.10), transparent 60%);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Style the cards inside Projects without changing your JSX:
+   targets any element with 'rounded-2xl' inside #projects */
+#projects .rounded-2xl{
+  background: linear-gradient(135deg, rgba(17,24,39,0.9), rgba(0,0,0,0.9));
+  border: 1px solid rgba(239,68,68,0.18);
+  box-shadow:
+    0 0 0 1px inset rgba(255,255,255,0.03),
+    0 16px 40px -20px rgba(239,68,68,0.35);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+#projects .rounded-2xl:hover{
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(239,68,68,0.35);
+  box-shadow:
+    0 0 0 1px inset rgba(255,255,255,0.05),
+    0 24px 60px -22px rgba(239,68,68,0.5);
+}
+
+/* tag-style links in cards */
+#projects a{
+  color: #fca5a5; /* red-300 */
+}
+#projects a:hover{
+  color: #ef4444; /* red-500 */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- CONTACT ( #contact ) ---------- */
+#contact{
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0), rgba(127,29,29,0.10) 60%, rgba(0,0,0,0)),
+    transparent;
+}
+#contact a[href^="mailto:"],
+#contact .btn-red { /* make the email button match hero CTA if you add .btn-red */
+  @apply inline-block;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:
+    linear-gradient(180deg, rgba(127,29,29,0.10), rgba(0,0,0,0)),
+    rgba(0,0,0,0.35);
+  border-top: 1px solid rgba(239,68,68,0.15);
+}
+
+/* ---------- Animations ---------- */
+@keyframes floatA {
+  0%,100% { transform: translate(0,0) scale(1); }
+  25% { transform: translate(30px,-20px) scale(1.05); }
+  50% { transform: translate(0,-40px) scale(1); }
+  75% { transform: translate(-25px,10px) scale(0.98); }
+}
+@keyframes floatB {
+  0%,100% { transform: translate(0,0) scale(1); }
+  20% { transform: translate(-25px,25px) scale(1.04); }
+  50% { transform: translate(15px,0) scale(1); }
+  80% { transform: translate(0,-20px) scale(0.97); }
+}
+
