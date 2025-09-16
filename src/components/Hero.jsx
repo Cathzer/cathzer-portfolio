@@ -7,7 +7,7 @@ function Hero() {
       id="home"
       className="h-screen relative flex flex-col justify-center items-center text-center px-6"
       style={{
-        backgroundImage: "url('/hero-bg.jpg')",
+        backgroundImage: "url('hero-bg.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

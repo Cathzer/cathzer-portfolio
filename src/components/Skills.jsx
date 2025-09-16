@@ -3,17 +3,17 @@ import { motion } from "framer-motion";
 export default function Skills() {
   // Skills with CDN icons (skillicons.dev + simpleicons + others)
   const skills = [
-    { name: "HIDS (Wazuh)", icon: "/icons/wazuh.png" },       
-    { name: "NIDS (Suricata)", icon: "/icons/suricata.png" }, 
-    { name: "Burp Suite", icon: "/icons/burpsuite.png" },     
-    { name: "Web Penetration Testing", icon: "/icons/webpentest.png" },
+    { name: "HIDS (Wazuh)", icon: "icons/wazuh.png" },       
+    { name: "NIDS (Suricata)", icon: "icons/suricata.png" }, 
+    { name: "Burp Suite", icon: "icons/burpsuite.png" },     
+    { name: "Web Penetration Testing", icon: "icons/webpentest.png" },
     { name: "PHP", icon: "https://skillicons.dev/icons?i=php" },
     { name: "HTML", icon: "https://skillicons.dev/icons?i=html" },
     { name: "CSS", icon: "https://skillicons.dev/icons?i=css" },
     { name: "JavaScript", icon: "https://skillicons.dev/icons?i=js" },
     { name: "Python", icon: "https://skillicons.dev/icons?i=python" },
     { name: "Java", icon: "https://skillicons.dev/icons?i=java" },
-    { name: "Network Security Monitoring", icon: "/icons/netsec.png" },
+    { name: "Network Security Monitoring", icon: "icons/netsec.png" },
     { name: "Unity", icon: "https://skillicons.dev/icons?i=unity" },
   ];
 
@@ -26,8 +26,8 @@ export default function Skills() {
 
   // Certifications
   const certifications = [
-    { name: "JLPT N4", icon: "/icons/JLPT_N4.jpg" },
-    { name: "JLPT N3", icon: "/icons/JLPT_N3.jpg" }
+    { name: "JLPT N4", icon: "icons/JLPT_N4.jpg" },
+    { name: "JLPT N3", icon: "icons/JLPT_N3.jpg" }
   ]
 
   // Awards

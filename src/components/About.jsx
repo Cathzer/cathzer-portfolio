@@ -21,7 +21,7 @@ function About() {
         
         {/* Profile Image */}
         <motion.img
-          src="/profile.jpg" 
+          src="profile.jpg" 
           alt="Profile"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -46,7 +46,7 @@ function About() {
         </motion.p>
       </div>
       <a
-        href="/resume.pdf"
+        href="resume.pdf"
         download="Alghazali_Winet_CV.pdf"
         className="inline-block px-6 py-3 rounded-xl bg-brand-red text-white font-semibold hover:bg-brand-red-light hover:scale-105 transition-transform duration-300 shadow-lg shadow-red-500/40"
       >
