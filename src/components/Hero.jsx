@@ -31,14 +31,14 @@ function Hero() {
           transition={{ delay: 0.3, duration: 1 }}
           className="mt-4 text-lg md:text-2xl text-gray-300 max-w-2xl"
         >
-          IT Student | Cybersecurity Enthusiast | Web Developer
+          IT Student | Cybersecurity Enthusiast | Passionate Japanese Learner
         </motion.p>
         <motion.a
-          href="#projects"
+          href="#about"
           whileHover={{ scale: 1.1 }}
           className="mt-8 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-lg transition-all"
         >
-          View My Work
+          Learn More
         </motion.a>
       </motion.div>
     </section>

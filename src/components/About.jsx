@@ -21,7 +21,7 @@ function About() {
         
         {/* Profile Image */}
         <motion.img
-          src="/profile.jpg" // 👉 place your image in the public folder as profile.jpg
+          src="/profile.jpg" 
           alt="Profile"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -39,12 +39,20 @@ function About() {
           className="text-lg text-gray-300 leading-relaxed"
         >
           I’m an IT student passionate about{" "}
-          <span className="text-red-400">cybersecurity</span>, web development,
+          <span className="text-red-400">cybersecurity</span>, japanese culture, web development,
           and building solutions that make an impact. Currently studying at
           President University, I aim to continue improving my skills through
           hands-on projects and learning new technologies.
         </motion.p>
       </div>
+      <a
+        href="/resume.pdf"
+        download="Alghazali_Winet_CV.pdf"
+        className="inline-block px-6 py-3 rounded-xl bg-brand-red text-white font-semibold hover:bg-brand-red-light hover:scale-105 transition-transform duration-300 shadow-lg shadow-red-500/40"
+      >
+        📄 Download Resume
+      </a>
+
     </section>
   );
 }

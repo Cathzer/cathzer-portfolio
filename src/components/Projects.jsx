@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -10,85 +12,115 @@ const projects = [
     youtube: "https://www.youtube.com/embed/AlW2dp36g2c",
   },
   {
-    title: "CTF Challange Full Report",
+    title: "CTF Challenge Full Report",
     desc: "Capture The Flag cybersecurity challenge with a detailed write-up of challenges, solutions, and techniques used.",
     details:
       "This project documents me and my team on CTF challenges, including problem-solving approaches, exploitation techniques, and lessons learned. It demonstrates practical cybersecurity skills and analytical thinking.",
     youtube: null,
-    pdf: "/CTF_Report.pdf",
-},
+    image: "ctf_leaderboard.png",
+    linkedin:
+      "https://www.linkedin.com/in/alghazali-winet-abdurrahman/overlay/1755695855988/single-media-viewer/?profileId=ACoAAEZPl5kBgeSphaBJltMDJF0KfPP6nDVyFxI",
+  },
   {
     title: "Wazuh + Suricata SOC",
     desc: "Cybersecurity project simulating HIDS & NIDS with alert integrations.",
     details:
       "I implemented a Security Operations Center simulation by integrating Wazuh (HIDS) and Suricata (NIDS). The system detects attacks like brute-force logins, file uploads, and port scans, with alert forwarding.",
     youtube: "https://www.youtube.com/embed/tNefeKXHo9M",
-    pdf: "/Wazuh_Report.pdf",
+    linkedin:
+      "https://www.linkedin.com/in/alghazali-winet-abdurrahman/overlay/1755695631871/single-media-viewer/?profileId=ACoAAEZPl5kBgeSphaBJltMDJF0KfPP6nDVyFxI",
   },
 ];
 
 export default function Projects() {
   const [open, setOpen] = useState(null);
-  const [fullscreenPdf, setFullscreenPdf] = useState(null);
+  const [fullscreenImage, setFullscreenImage] = useState(null);
 
   return (
     <section id="projects" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold text-center text-red-500">Projects</h2>
+      <motion.h2
+        className="text-4xl font-bold text-center text-red-500"
+        initial={{ opacity: 0, y: -40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        Projects
+      </motion.h2>
+
       <div className="mt-12 grid md:grid-cols-3 gap-8">
         {projects.map((project, i) => (
           <motion.div
             key={i}
-            className="p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-black shadow-lg hover:shadow-red-500/30"
-            whileHover={{ scale: 1.02 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: i * 0.15 }}
+            whileHover={{ scale: 1.03 }}
+            className="p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 shadow-lg hover:shadow-red-500/40 transition-all"
           >
-            <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-            <p className="mt-3 text-gray-400">{project.desc}</p>
+            {/* Title & Short Desc */}
+            <h3 className="text-xl font-semibold text-white">
+              {project.title}
+            </h3>
+            <p className="mt-3 text-gray-400 text-sm">{project.desc}</p>
 
+            {/* Toggle Button */}
             <button
               onClick={() => setOpen(open === i ? null : i)}
-              className="mt-4 inline-block text-red-400 hover:text-red-600"
+              className="mt-4 text-sm font-medium text-red-400 hover:underline"
             >
               {open === i ? "Hide Details ↑" : "Learn More →"}
             </button>
 
+            {/* Expanded Content */}
             {open === i && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="mt-4 text-gray-300 space-y-3"
+                transition={{ duration: 0.4 }}
+                className="mt-4 text-gray-300 space-y-4"
               >
-                <p>{project.details}</p>
+                <p className="leading-relaxed">{project.details}</p>
 
-                {/* YouTube video */}
+                {/* YouTube Video */}
                 {project.youtube && (
-                  <div className="relative w-full aspect-video">
+                  <div className="relative w-full aspect-video rounded-xl overflow-hidden">
                     <iframe
                       src={project.youtube}
                       title={project.title}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      className="absolute inset-0 w-full h-full rounded-xl"
+                      className="absolute inset-0 w-full h-full"
                     />
                   </div>
                 )}
 
-                {/* PDF viewer with fullscreen */}
-                {project.pdf && (
-                  <div>
-                    <div className="relative w-full aspect-[4/3]">
-                      <iframe
-                        src={project.pdf}
-                        title={project.title}
-                        className="absolute inset-0 w-full h-full rounded-xl border border-gray-700"
-                      />
-                    </div>
-                    <button
-                      onClick={() => setFullscreenPdf(project.pdf)}
-                      className="mt-2 text-sm text-red-400 hover:text-red-600 underline"
+                {/* Local Image */}
+                {project.image && (
+                  <div
+                    onClick={() => setFullscreenImage(project.image)}
+                    className="relative w-full h-64 overflow-hidden rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300"
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+
+                {/* LinkedIn Report */}
+                {project.linkedin && (
+                  <div className="mt-2">
+                    <a
+                      href={project.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block text-sm text-red-400 hover:underline"
                     >
-                      Fullscreen PDF
-                    </button>
+                      🔗 View Full Report on LinkedIn
+                    </a>
                   </div>
                 )}
               </motion.div>
@@ -97,28 +129,26 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Fullscreen PDF overlay (works on both PC & mobile) */}
-      {fullscreenPdf && (
+      {/* Fullscreen Image Overlay */}
+      {fullscreenImage && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-95 flex flex-col">
           <div className="flex justify-end p-4">
             <button
-              onClick={() => setFullscreenPdf(null)}
+              onClick={() => setFullscreenImage(null)}
               className="text-white text-lg font-bold hover:text-red-400"
             >
               ✕ Close
             </button>
           </div>
-          <div className="flex-1 p-2 md:p-0">
-            <iframe
-              src={fullscreenPdf}
-              title="Fullscreen PDF"
-              className="w-full h-full rounded-md md:rounded-none"
-              style={{ minHeight: "100%", border: "none" }}
+          <div className="flex-1 overflow-auto flex items-center justify-center p-2 md:p-4">
+            <img
+              src={fullscreenImage}
+              alt="Fullscreen Preview"
+              className="rounded-lg"
             />
           </div>
         </div>
       )}
-
     </section>
   );
 }

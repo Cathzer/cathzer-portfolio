@@ -14,7 +14,7 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold text-red-500">Alghazali's Portfolio</h1>
         <ul className="hidden md:flex space-x-8 text-gray-200">
-          {["Home", "About", "Projects", "Contact"].map((item) => (
+          {["Home", "About", "Projects","Skills", "Contact"].map((item) => (
             <li key={item}>
               <a
                 href={`#${item.toLowerCase()}`}

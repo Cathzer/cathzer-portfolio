@@ -30,6 +30,7 @@ export default {
         "fade-in-up": "fadeInUp 1s ease-out forwards",
         float: "float 4s ease-in-out infinite",
       },
+      scrollBehavior: ['smooth'],
     },
   },
   plugins: [],
