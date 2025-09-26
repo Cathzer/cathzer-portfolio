@@ -24,11 +24,22 @@ export default function Skills() {
     { name: "Japan", icon: "https://flagcdn.com/w20/jp.png" },
   ];
 
-  // Certifications
+  // Certifications 
   const certifications = [
-    { name: "JLPT N4", icon: "icons/JLPT_N4.jpg" },
-    { name: "JLPT N3", icon: "icons/JLPT_N3.jpg" }
-  ]
+    {
+      name: "JLPT N4",
+      icon: "icons/JLPT_N4.jpg",
+      link: "https://www.linkedin.com/in/alghazali-winet-abdurrahman/overlay/1758859016319/single-media-viewer/?profileId=ACoAAEZPl5kBgeSphaBJltMDJF0KfPP6nDVyFxI",
+      status: "Verified",
+    },
+    {
+      name: "JLPT N3",
+      icon: "icons/JLPT_N3.jpg",
+      link: null, // certificate not issued yet
+      status: "Pending (Oct 2025)",
+    },
+  ];
+
 
   // Awards
   const awards = [
@@ -59,9 +70,9 @@ export default function Skills() {
     duration: "Sep 2025 – Dec 2025",
     icon: "icons/ptba.png",
     responsibilities: [
-      "Mapping the company system using CIS v8.1-NIST CSF 2.0",
-      "Creating a visual illustration for the mapping",
-      "Learning about cyber security awareness"
+      "Mapping the Company Security Landscape using CIS v8.1 - NIST CSF v2.0",
+      "Creating a Visual Illustration for the Mapping",
+      "Analyzing Framework Gaps and Uncovered Subcategories"
     ],
   },
   {
@@ -158,18 +169,56 @@ export default function Skills() {
           <h3 className="text-2xl font-semibold mb-6 text-brand-red-light">
             Certifications
           </h3>
+
           <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {certifications.map((cert, i) => (
-              <motion.div
-                key={i}
-                className="flex items-center gap-3 bg-black/40 rounded-xl px-4 py-3 cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-red-500/40 transition-all duration-300"
-              >
-                <img src={cert.icon} alt={cert.name} className="w-8 h-8 object-contain" />
-                <span className="text-gray-300">{cert.name}</span>
-              </motion.div>
-            ))}
+            {certifications.map((cert, i) => {
+              // simple status styling
+              const isVerified = cert.status?.toLowerCase().includes("verified");
+              const statusClasses = isVerified
+                ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
+                : "bg-amber-500/15 text-amber-300 border border-amber-500/30";
+
+              return (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex items-center justify-between bg-black/40 rounded-xl px-5 py-4 hover:shadow-lg hover:shadow-red-500/40 transition-all duration-300"
+                >
+                  {/* Left: icon + name */}
+                  <div className="flex items-center gap-3 min-w-0">
+                    <img
+                      src={cert.icon}
+                      alt={cert.name}
+                      className="w-9 h-9 object-contain"
+                    />
+                    <span className="text-gray-300 truncate">{cert.name}</span>
+                  </div>
+
+                  {/* Right: status + optional proof link */}
+                  <div className="flex items-center gap-3">
+                    {cert.status && (
+                      <span className={`text-xs rounded-full px-2 py-1 ${statusClasses}`}>
+                        {cert.status}
+                      </span>
+                    )}
+                    {cert.link && (
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-brand-red-light hover:underline whitespace-nowrap"
+                      >
+                        View
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </motion.div>
+
 
         {/* Awards & Activities */}
         <motion.div
