@@ -35,8 +35,8 @@ export default function Skills() {
     {
       name: "JLPT N3",
       icon: "icons/JLPT_N3.jpg",
-      link: null, // certificate not issued yet
-      status: "Pending (Oct 2025)",
+      link: "https://www.linkedin.com/in/alghazali-winet-abdurrahman/overlay/1760945848010/single-media-viewer/?profileId=ACoAAEZPl5kBgeSphaBJltMDJF0KfPP6nDVyFxI",
+      status: "Verified",
     },
   ];
 
